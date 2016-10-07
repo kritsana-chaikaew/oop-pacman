@@ -11,22 +11,27 @@ public class World {
   public World (PacmanGame pacmanGame) {
     this.pacmanGame = pacmanGame;
 
-    pacman = new Pacman(100, 100);
+    pacman = new Pacman(60, 60);
     maze = new Maze();
   }
 
   public void update (float delta) {
+    pacman.update();
+    updatePacmanDirection();
+  }
+
+  private void updatePacmanDirection () {
     if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-      pacman.move(Pacman.DIRECTION_LEFT);
+      pacman.setNextDirection(Pacman.DIRECTION_LEFT);
     }
     else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-      pacman.move(Pacman.DIRECTION_RIGHT);
+      pacman.setNextDirection(Pacman.DIRECTION_RIGHT);
     }
     else if (Gdx.input.isKeyPressed(Keys.UP)) {
-      pacman.move(Pacman.DIRECTION_UP);
+      pacman.setNextDirection(Pacman.DIRECTION_UP);
     }
     else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-      pacman.move(Pacman.DIRECTION_DOWN);
+      pacman.setNextDirection(Pacman.DIRECTION_DOWN);
     }
   }
 
