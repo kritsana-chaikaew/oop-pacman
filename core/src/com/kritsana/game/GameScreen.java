@@ -6,21 +6,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter {
-  private PacMan game;
+  private PacmanGame game;
 
   private Texture pacmanImage;
 
-  private int x;
-  private int y;
+  private Pacman  pacman;
 
-  public GameScreen (PacMan game) {
+  public GameScreen (PacmanGame game) {
     this.game = game;
     pacmanImage = new Texture("pacman.png");
 
-    x = 100;
-    y = 100;
+    pacman = new Pacman(100, 100);
   }
 
   @Override
@@ -33,16 +32,23 @@ public class GameScreen extends ScreenAdapter {
     SpriteBatch batch = game.batch;
 
     batch.begin();
-    batch.draw(pacmanImage, x, y);
+    Vector2 position = pacman.getPosition();
+    batch.draw(pacmanImage, position.x, position.y);
     batch.end();
   }
 
   public void update (float delta) {
     if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-      x -= 10;
+      pacman.move(Pacman.DIRECTION_LEFT);
     }
-    if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-      x += 10;
+    else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+      pacman.move(Pacman.DIRECTION_RIGHT);
+    }
+    else if (Gdx.input.isKeyPressed(Keys.UP)) {
+      pacman.move(Pacman.DIRECTION_UP);
+    }
+    else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+      pacman.move(Pacman.DIRECTION_DOWN);
     }
   }
 }

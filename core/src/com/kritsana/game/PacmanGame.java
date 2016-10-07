@@ -3,7 +3,7 @@ package com.kritsana.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class PacMan extends Game {
+public class PacmanGame extends Game {
 	public SpriteBatch batch;
 
 	@Override
