@@ -6,11 +6,13 @@ import com.badlogic.gdx.Input.Keys;
 public class World {
   private PacmanGame pacmanGame;
   private Pacman  pacman;
+  private Maze maze;
 
   public World (PacmanGame pacmanGame) {
     this.pacmanGame = pacmanGame;
 
     pacman = new Pacman(100, 100);
+    maze = new Maze();
   }
 
   public void update (float delta) {
@@ -30,5 +32,9 @@ public class World {
 
   Pacman getPacman () {
     return pacman;
+  }
+
+  Maze getMaze () {
+    return maze;
   }
 }
