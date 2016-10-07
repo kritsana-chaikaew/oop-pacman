@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input.Keys;
 public class World {
   private PacmanGame pacmanGame;
   private Pacman  pacman;
+
   public World (PacmanGame pacmanGame) {
     this.pacmanGame = pacmanGame;
 
