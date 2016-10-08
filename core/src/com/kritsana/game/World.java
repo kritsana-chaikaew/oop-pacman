@@ -11,8 +11,9 @@ public class World {
   public World (PacmanGame pacmanGame) {
     this.pacmanGame = pacmanGame;
 
-    pacman = new Pacman(60, 60);
     maze = new Maze();
+
+    pacman = new Pacman(60, 60, maze);
   }
 
   public void update (float delta) {
@@ -32,6 +33,8 @@ public class World {
     }
     else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
       pacman.setNextDirection(Pacman.DIRECTION_DOWN);
+    } else {
+      pacman.setNextDirection(Pacman.DIRECTION_STILL);
     }
   }
 
